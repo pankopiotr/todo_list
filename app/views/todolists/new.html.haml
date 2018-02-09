@@ -1,0 +1,4 @@
+= simple_form_for @todolist, wrapper: 'central_form' do |f|
+  = f.input :name, placeholder: 'Specify name for list', error: 'Name is mandatory field'
+  = f.input :author, placeholder: 'Specify author'
+  = f.button :formatted_submit, 'Create list'
