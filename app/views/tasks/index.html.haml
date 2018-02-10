@@ -1,0 +1,16 @@
+.table-responsive
+  %table{class: 'table table-hover table-striped'}
+    %tr{class: 'info'}
+      %td Name:
+      %td= @todolist.name
+    %tr{class: 'info'}
+      %td Author:
+      %td= @todolist.author
+    - @todolist.tasks.each do |task|
+      %tr
+        %td Title:
+        %td= task.title
+      %tr
+        %td Description:
+        %td= task.description
+        

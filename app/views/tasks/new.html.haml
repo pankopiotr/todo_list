@@ -1,0 +1,4 @@
+= simple_form_for @task, url: todolist_tasks_path, method: :post, wrapper: :central_form do |f|
+  = f.input :title, placeholder: 'Specify title', error: 'Title is mandatory field'
+  = f.input :description, placeholder: 'Specify name'
+  = f.button :formatted_submit, 'Create task'

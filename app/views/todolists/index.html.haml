@@ -1,0 +1,15 @@
+.table-responsive
+  %table{class: 'table table-hover'}
+    %thead
+      %tr
+        %th ID
+        %th Name
+        %th Author
+        %th Number of tasks
+    %tbody
+      - @todolists.each do |list|
+        %tr
+          %td= list.id
+          %td= list.name
+          %td= list.author
+          %td= list.tasks.count
