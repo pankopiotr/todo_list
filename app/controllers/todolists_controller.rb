@@ -7,7 +7,7 @@ class TodolistsController < ApplicationController
     @todolist = Todolist.new(todolist_params)
     if @todolist.valid?
       @todolist.save
-      redirect_to root_path
+      redirect_to todolists_path
     else
       render 'new'
     end
