@@ -13,9 +13,13 @@ class TodolistsController < ApplicationController
     end
   end
 
+  def index
+    @todolists = Todolist.all
+  end
+
   private
 
     def todolist_params
-      params.require(:todolist).permit(:name, :author)
+      params.require(:todolist).permit(:name, :author, :private)
     end
 end
