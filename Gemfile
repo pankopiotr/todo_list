@@ -23,4 +23,5 @@ end
 group :test do
   gem 'rspec', '~> 3.7.0'
   gem 'rspec-rails', '~> 3.7.0'
+  gem 'shoulda-matchers', '~> 3.1.0'
 end
