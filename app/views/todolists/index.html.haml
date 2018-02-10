@@ -6,6 +6,7 @@
         %th Name
         %th Author
         %th Number of tasks
+        %th Delete?
     %tbody
       - @todolists.each do |list|
         %tr
@@ -13,3 +14,5 @@
           %td= list.name
           %td= list.author
           %td= list.tasks.count
+          %td
+            = button_to 'Delete', todolist_path(list.id), method: :delete, class: 'btn btn-warning'

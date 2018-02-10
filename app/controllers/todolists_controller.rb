@@ -17,6 +17,11 @@ class TodolistsController < ApplicationController
     @todolists = Todolist.all
   end
 
+  def destroy
+    Todolist.destroy(params[:id])
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
     def todolist_params
