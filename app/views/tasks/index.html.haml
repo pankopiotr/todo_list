@@ -5,7 +5,7 @@
       %td= @todolist.name
     %tr{class: 'info'}
       %td Author:
-      %td= @todolist.author
+      %td= @todolist.user.nickname
     - @todolist.tasks.each do |task|
       %tr
         %td Title:
@@ -13,4 +13,5 @@
       %tr
         %td Description:
         %td= task.description
-        
+.text-center
+  = link_to "Back", :back, class: 'btn btn-default'

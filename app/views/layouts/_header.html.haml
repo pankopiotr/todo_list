@@ -1,0 +1,26 @@
+- if user_signed_in?
+  .navbar.navbar-default
+    .container-fluid
+      %a{class: 'navbar-brand'} ToyApp
+      %ul{class: 'nav navbar-nav'}
+        %li
+          %p{class: 'navbar-text'}
+            = "Logged as #{current_user.email}"
+      %ui{class: 'nav navbar-nav navbar-right'}
+        %li
+          = link_to 'Create new list', new_todolist_path, class: 'navbar-link'
+        %li
+          = link_to 'All lists', todolists_path, class: 'navbar-link'
+        %li
+          = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'navbar-link'
+  - # bardzo, bardzo brzydkie rozwiązanie i do tego w złym miejscu, ale szkoda czasu na szczegóły,
+  - # gdyż nie to jest celem tej aplikacji
+  - if flash
+    .text-center
+      - flash.each do |message_type, message|
+        - if message_type = 'alert'
+          = content_tag :div, message, class: "alert alert-danger"
+        - elsif message_type = 'notice'
+          = content_tag :div, message, class: "alert alert-info"
+        - else
+          = content_tag :div, message, class: "alert alert-#{message_type}"

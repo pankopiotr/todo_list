@@ -12,8 +12,14 @@
         %tr
           %td= list.id
           %td= list.name
-          %td= list.author
+          %td= list.user.nickname
           %td= list.tasks.count
-          - if user_signed_in?
-            %td
-              = button_to 'Delete', todolist_path(list.id), method: :delete, class: 'btn btn-warning'
+          %td
+            .btn-group
+              - if policy(list).destroy?
+                = link_to 'Delete list', todolist_path(list.id), method: :delete, class: 'btn btn-sm btn-default'
+              - # brzydko i powinno znajdować się gdzie indziej, ale szkoda na to czasu
+              - if policy(Task.new(todolist: list)).create?
+                = link_to 'Create task', new_todolist_task_path(list.id), class: 'btn btn-sm btn-default'
+.text-center
+  = link_to "Back", :back, class: 'btn btn-default'
