@@ -1,0 +1,13 @@
+.text-center
+  %h2 Log in
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), wrapper: :central_form) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, autofocus: true, placeholder: 'Enter your email'
+      = f.input :nickname, placeholder: 'Enter your nickname'
+      = f.input :password, placeholder: 'Enter your password'
+      = f.input :remember_me, wrapper_html: { class: 'form-group col-xs-offset-4 col-xs-4 text-left' }, as: :boolean if devise_mapping.rememberable?
+    .form-actions
+      = f.button :formatted_submit, "Log in"
+      .col-xs-4.col-xs-offset-4 
+        = render "users/shared/links"

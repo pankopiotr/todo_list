@@ -1,4 +1,6 @@
 class TodolistsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create destroy]
+
   def new
     @todolist = Todolist.new
   end
@@ -19,7 +21,7 @@ class TodolistsController < ApplicationController
 
   def destroy
     Todolist.destroy(params[:id])
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: authenticated_root_path)
   end
 
   private

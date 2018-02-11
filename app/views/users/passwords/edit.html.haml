@@ -1,0 +1,14 @@
+.text-center
+  %h2 Change your password
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }, wrapper: :central_form) do |f|
+    = f.error_notification
+    = f.input :reset_password_token, as: :hidden
+    = f.full_error :reset_password_token
+    .form-inputs
+      = f.input :password, placeholder: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+      = f.input :password_confirmation, placeholder: "Confirm your new password", required: true
+    .form-actions
+      = f.button :formatted_submit, "Change my password"
+      .col-xs-4.col-xs-offset-4
+        = render "users/shared/links"
+        = link_to "Back", :back, class: 'btn btn-warning'

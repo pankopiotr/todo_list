@@ -1,0 +1,13 @@
+.text-center
+  %h2 Resend confirmation instructions
+  = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, wrapper: :central_form) do |f|
+    = f.error_notification
+    = f.full_error :confirmation_token
+    .form-group
+      .form-inputs
+        = f.input :email, required: true, autofocus: true, placeholder: 'Enter your email'
+      .form-actions
+        = f.button :formatted_submit, "Resend confirmation instructions"
+  .col-xs-4.col-xs-offset-4
+    = render "users/shared/links"
+    = link_to "Back", :back, class: 'btn btn-warning'

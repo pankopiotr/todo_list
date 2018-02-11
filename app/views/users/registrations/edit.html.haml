@@ -1,0 +1,19 @@
+.text-center
+  %h2= "Edit #{resource_name.to_s.humanize}"
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, wrapper: :central_form) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, required: true, autofocus: true, placeholder: 'Enter new email to change current one'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %p
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      = f.input :password, autocomplete: "off", placeholder: "Enter new password to change current one", required: false
+      = f.input :password_confirmation, placeholder: "Re-enter new password", required: false
+      = f.input :current_password, placeholder: "Enter old password to confirm change", required: true
+    .form-actions
+      = f.button :formatted_submit, "Update"
+  .col-xs-4.col-xs-offset-4
+    %h3 Cancel my account
+    %p
+      Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+    = link_to "Back", :back, class: 'btn btn-warning'

@@ -1,0 +1,15 @@
+.text-center
+  %h2 Sign up
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :central_form) do |f|
+    = f.error_notification
+    .form-inputs
+      = f.input :email, autofocus: true, placeholder: "Enter your email"
+      = f.input :nickname, placeholder: 'Enter your nickname'
+      = f.input :favourite_color, placeholder: 'Enter your favourite color'
+      = f.input :password, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "Enter your password"
+      = f.input :password_confirmation, required: true, placeholder: "Repeat your password"
+    .form-actions
+      = f.button :formatted_submit, "Sign up"
+  .col-xs-4.col-xs-offset-4 
+    = render "users/shared/links"
+    = link_to "Back", :back, class: 'btn btn-warning'
