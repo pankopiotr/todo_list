@@ -5,4 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   validates :nickname, presence: true, uniqueness: true
+
+  def to_s
+    nickname
+  end
 end
