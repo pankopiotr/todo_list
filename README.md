@@ -1,24 +1,46 @@
-# README
+# Todolist toy-application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The purpose of this application is to get acquainted with simple_form, devise, pundit, activeadmin and grape gems.
 
-Things you may want to cover:
+Application uses **ruby v2.5.0**
 
-* Ruby version
+## Installation
+After cloning repository run:
+```
+rails db:setup
+rails s
+```
+## Devise
+Fields required for user to sign in are:
+* email
+* nickname
+* password
 
-* System dependencies
+## Active admin
+Credentials for admin are default ones: 'admin@example.com/password'
+Admin does not require nickname to be provided.
 
-* Configuration
+## API
+API does not reflect application's behaviour 1:1, as currently API authentication is not implemented. In some cases access is limited (e.g. index will only show public todolists), sometimes it's empowered (everyone can delete any todolist).
 
-* Database creation
+API versioning strategy is param. To call other version then default (latest), please use command below:
+```
+curl http://localhost:3000/api/todolists?version=v1
+```
+### Exemplary calls using curl
+```
+# Get all todolists
+curl http://localhost:3000/api/todolists
 
-* Database initialization
+# Get todolist and associated tasks
+curl http://localhost:3000/api/todolists/1
 
-* How to run the test suite
+# Create todolist
+curl -d '{ "name": "API Todolist", "private": "True", "user_id": "1" }' 'http://localhost:3000/api/todolists/' -H Content-Type:application/json -v
 
-* Services (job queues, cache servers, search engines, etc.)
+# Create task
+curl -d '{ "title": "API Task", "description": "New task created using API!" }' 'http://localhost:3000/api/todolists/1/tasks' -H Content-Type:application/json -v
 
-* Deployment instructions
-
-* ...
+# Delete todolist
+curl -X DELETE 'http://localhost:3000/api/todolists/1'
+```
