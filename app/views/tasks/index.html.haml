@@ -3,15 +3,23 @@
     %tr{class: 'info'}
       %td Name:
       %td= @todolist.name
+      %td
     %tr{class: 'info'}
       %td Author:
       %td= @todolist.user.nickname
+      %td
     - @todolist.tasks.each do |task|
       %tr
         %td Title:
         %td= task.title
+        %td= 'Completed' if task.completed
       %tr
+        %td
         %td Description:
         %td= task.description
+      %tr
+        %td
+        %td Deadline:
+        %td= task.deadline
 .text-center
   = link_to "Back", :back, class: 'btn btn-default'
