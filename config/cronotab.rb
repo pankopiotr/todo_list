@@ -14,3 +14,5 @@
 # Crono.perform(TestJob).every 2.days, at: '15:30'
 #
 
+Crono.perform(DeleteStaleTasksJob).every 1.hour, at: { min: 45 }
+Crono.perform(DeleteCompletedTasksJob).every 15.minutes
