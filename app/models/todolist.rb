@@ -1,7 +1,7 @@
 class Todolist < ApplicationRecord
   has_many :tasks
   belongs_to :user
-  validates_presence_of :name
+  validates_presence_of :name, :private
 
   scope :unrestricted, ->{ where(private: false) }
 
