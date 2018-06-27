@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212181717) do
+ActiveRecord::Schema.define(version: 20180627192335) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,12 +29,24 @@ ActiveRecord::Schema.define(version: 20180212181717) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "crono_jobs", force: :cascade do |t|
+    t.string "job_id", null: false
+    t.text "log", limit: 1073741823
+    t.datetime "last_performed_at"
+    t.boolean "healthy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_crono_jobs_on_job_id", unique: true
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.integer "todolist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false, null: false
+    t.date "deadline"
     t.index ["todolist_id"], name: "index_tasks_on_todolist_id"
   end
 
@@ -42,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180212181717) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "private", default: false
+    t.boolean "private", default: false, null: false
     t.integer "user_id"
     t.index ["user_id"], name: "index_todolists_on_user_id"
   end

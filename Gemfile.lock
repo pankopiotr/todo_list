@@ -82,6 +82,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    crono (1.1.2)
+      activerecord (>= 4.0)
+      activesupport (>= 4.0)
     debug_inspector (0.0.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -286,6 +289,7 @@ DEPENDENCIES
   better_errors (~> 2.4.0)
   binding_of_caller
   bootstrap-sass (~> 3.3)
+  crono (~> 1.1.2)
   devise (~> 4.4.0)
   grape
   haml
