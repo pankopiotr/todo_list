@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'activeadmin'
+gem 'attr_encrypted'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'crono', '~> 1.1.2'
