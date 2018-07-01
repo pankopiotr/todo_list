@@ -1,0 +1,23 @@
+# Ignore docker files
+Dockerfile
+.dockerignore
+
+# Ignore Git
+.git
+.gitignore
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore readme
+README.md
+
+# Ignore logfiles
+/log/*
+
+# Ignore tempfiles
+/tmp/*
+
+# Ignore node_modules
+/node_modules
